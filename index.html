@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dmytro Popadiuk | PCB Designer — KiCad, EasyEDA, LTspice</title>
+    <meta name="description" content="Dmytro Popadiuk — Electronics engineer, development of electrical circuits, design of printed circuit boards, selection of components, preparation and support of production, writing embedded programs, KiCAD, LT-SPICE, STM8, STM32, ESP32.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Dmytro Popadiuk — PCB Designer">
+    <meta property="og:description" content="This is a portfolio site that presents: creating electronics, designing electrical circuits, designing printed circuit boards, optimizing for production, testing, writing embedded software.">
+    <meta property="og:url" content="https://DmytroPCB.github.io">
+    <meta property="og:image" content="screens/avatar.webp
+    <meta property="og:site_name" content="Dmytro Popadiuk">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Dmytro Popadiuk — PCB Designer">
+    <meta name="twitter:description" content="Real PCB projects. KiCad, EAGLE, LTspice. Hardware designs from a PCB engineer who takes projects from schematic to prototype and production.">
+    <link rel="canonical" href="https://DmytroPCB.github.io">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&family=DM+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="portfolio.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <style>
+        body { font-family: 'DM Sans', sans-serif; }
+        h1, h2, h3 { font-family: 'Poppins', sans-serif; }
+
+        /* ── Hero ── */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 4rem 3rem;
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 4rem;
+            align-items: center;
+            width: 100%;
+        }
+        .hero-eyebrow {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #F05138;
+            margin-bottom: 0.75rem;
+        }
+        .hero-heading {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2.8rem, 4.5vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.05;
+            color: #1D1D1F;
+            margin-bottom: 0.5rem;
+        }
+        .hero-sub {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #6E6E73;
+            margin-bottom: 1.25rem;
+        }
+        .hero-desc {
+            font-size: 1.05rem;
+            color: #6E6E73;
+            line-height: 1.7;
+            max-width: 460px;
+            margin-bottom: 2rem;
+        }
+        .hero-ctas { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+        .hero-visual { display: flex; justify-content: center; align-items: center; }
+        .hero-mockup {
+            max-height: 500px;
+            max-width: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 28px 55px rgba(0,0,0,0.13));
+        }
+
+        /* ── Section heading ── */
+        .section-heading {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #1D1D1F;
+            display: flex;
+            align-items: center;
+            gap: 0.625rem;
+        }
+
+        /* ── Featured app cards ── */
+        .featured-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .featured-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -8px rgba(240,81,56,0.13);
+        }
+
+        /* ── Explore cards ── */
+        .explore-card { transition: transform 0.25s ease, box-shadow 0.25s ease; }
+        .explore-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px -6px rgba(0,0,0,0.09);
+        }
+
+        /* ── About accent boxes ── */
+        .about-box {
+            background: #fff0ed;
+            border-radius: 12px;
+            padding: 1rem;
+        }
+        .about-box-label {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #D93F25;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-bottom: 0.4rem;
+        }
+
+        /* ── Mobile adjustments ── */
+        @media (max-width: 1024px) {
+            .hero-section { padding: 5rem 2rem 3rem; min-height: auto; }
+            .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .hero-visual { order: -1; }
+            .hero-mockup { max-height: 340px; }
+            .hero-desc { max-width: 100%; }
+        }
+        @media (max-width: 768px) {
+            .hero-section { padding: 5rem 1.25rem 2.5rem; }
+        }
+    </style>
+</head>
+<body class="bg-[#F5F5F7] antialiased">
+
+    <!-- Mobile burger -->
+    <button id="burger-btn" class="burger-btn" aria-label="Open menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+    </button>
+    <div id="sidebar-overlay" class="sidebar-overlay" role="presentation"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar" role="navigation" aria-label="Site navigation">
+        <div class="sidebar-inner">
+            <div class="sidebar-brand">
+                <a href="index.html" class="sidebar-name">Dmytro Popadiuk</a>
+                <p class="sidebar-tagline">PCB Designer</p>
+            </div>
+            <hr class="sidebar-divider">
+            <nav class="sidebar-nav">
+                <a href="#about"   class="sidebar-nav-link" data-section="about">About</a>
+                <a href="PCBs.html" class="sidebar-nav-link" data-page="apps">PCBs</a>
+                <a href="video.html" class="sidebar-nav-link" data-page="youtube">Video</a>
+                <a href="#contact" class="sidebar-nav-link" data-section="contact">Contact</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="https://www.upwork.com/freelancers/~01f2a1a67598894509?mp_source=share" target="_blank" rel="noopener" class="sidebar-social" aria-label="Upwork">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18.2 7.1c-1.8 0-3.3 1.1-4.2 2.7-.5-.9-.9-2-1.2-3.1h-3v5.1c0 1.4-.6 2.3-1.7 2.3-1 0-1.6-.9-1.6-2.3V6.7h-3v5.1c0 3.1 1.8 5.2 4.6 5.2 1.5 0 2.7-.7 3.5-1.9.5.9 1 1.8 1.6 2.7h3.4c-.9-1.2-1.7-2.5-2.3-3.7.8-1.3 1.8-2 3-2 1.1 0 2 .8 2 2s-.9 2-2.1 2c-.5 0-.9-.1-1.3-.3l-.8 2.8c.7.3 1.5.5 2.3.5 2.8 0 4.9-2.1 4.9-5s-2.1-5-4.1-5z"/></svg>
+                </a>
+                <a href="https://www.fiverr.com/s/ye2RyzG" target="_blank" rel="noopener" class="sidebar-social" aria-label="YouTube">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4C11.46 4 9 6.46 9 9.5V10H6v3h3v6H6v3h9v-3h-3v-6h4v-3h-4v-.5c0-1.1.9-2 2-2h2V4h-1.5z"/>
+							<circle cx="17.5" cy="7" r="1.5"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon></svg>
+                </a>
+                <a href="https://freelancehunt.com/freelancer/Dmytro_Popadiuk.html" target="_blank" rel="noopener" class="sidebar-social" aria-label="toolbit.dev">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10
+								 10-4.48 10-10S17.52 2 12 2zm0 3
+								 c3.87 0 7 3.13 7 7 0 1.55-.5 2.98-1.35 4.14
+								 l-3.07-3.07c.27-.46.42-.99.42-1.57
+								 0-1.66-1.34-3-3-3-.58 0-1.11.16-1.57.42L7.36 5.85
+								 A6.96 6.96 0 0 1 12 5zm-7 7c0-1.55.5-2.98 1.35-4.14
+								 l3.07 3.07c-.27.46-.42.99-.42 1.57
+								 0 1.66 1.34 3 3 3 .58 0 1.11-.16 1.57-.42l3.07 3.07
+								 A6.96 6.96 0 0 1 12 19c-3.87 0-7-3.13-7-7z"/>
+				    </svg>
+                </a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main content -->
+    <div class="main-content">
+
+        <!-- Hero -->
+        <section id="hero" class="hero-section">
+            <div class="hero-grid">
+                <div>
+                    <p class="hero-eyebrow">PCB &amp; Circuit designer</p>
+                    <h1 class="hero-heading">Dmytro<br>Popadiuk</h1>
+                    <p class="hero-sub">Turn dreams into electronics.</p>
+                    <p class="hero-desc">I design PCBs, electronic circuits, and embedded software. I create, design, test, and implement electronic systems.</p>
+                    <div class="hero-ctas">
+                        <a href="PCBs.html" class="btn-primary">See What I've Built</a>
+                        <a href="#about" class="btn-secondary">My Story</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <img src="screens/Sound_card_1.png" alt="Sound_card_ — ADHD focus and time-blocking app" class="hero-mockup float-anim">
+                </div>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section id="about" class="bg-white rounded-2xl shadow-sm mx-6 mb-6 p-8 reveal">
+            <h2 class="section-heading mb-6">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F05138" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                About Me
+            </h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="md:col-span-2">
+                    <p class="text-gray-700 mb-5 text-lg leading-relaxed">
+                        I started in electronics by learning the fundamentals of circuit design, components, and embedded systems. Over time, I taught myself PCB design because I wanted to turn ideas and schematics into real, working hardware. Since then, I've designed and built electronic circuits, PCBs, and hardware projects — learning, testing, and improving with every project.
+                    </p>
+					<details>
+						<summary class="cursor-pointer hover:bg-gray-100 rounded-lg p-2 transition-colors duration-200">
+							<p class="text-gray-700 text-lg leading-relaxed">
+								My services
+							</p>
+							<span></span>
+						</summary>
+
+						<div class="text-gray-700 text-lg leading-relaxed" id="services">							
+							<p>🎛 <strong>Analog and digital electronics</strong></p>
+							<ul>
+								<li>&bull;&emsp; Creating circuits for unique devices.</li>
+								<li>&bull;&emsp; Accurate calculation and modeling using LTSpice.</li>
+							</ul>
+		
+						<p>🔧 <strong>PCB Design</strong></p>
+							<ul>
+								<li>&bull;&emsp; Designing in KiCAD, EasyEDA, Altium Designer.</li>
+								<li>&bull;&emsp; Creating complex multilayer boards for modern devices.</li>
+								<li>&bull;&emsp; Preparing all necessary files for production (GERBER, BOM).</li>
+								<li>&bull;&emsp; Optimizing the cost of production.</li>
+							</ul>
+
+						<p>⚡ <strong>Prototyping and manufacturing</strong></p>
+							<ul>
+								<li>&bull;&emsp; 3-D visualization of both the printed circuit board and the device design.</li>
+								<li>&bull;&emsp; Fast and efficient cycle from design to prototype.</li>
+								<li>&bull;&emsp; Preparing working prototypes to test your idea.</li>
+								<li>&bull;&emsp; Support for ordering in production.</li>
+							</ul>
+
+						<p>📡 <strong>Network technologies and algorithms</strong></p>
+							<ul>
+								<li>&bull;&emsp; Developing solutions for IoT, network integration, cloud services.</li>
+								<li>&bull;&emsp; Creating and tuning algorithms for system efficiency.</li>
+							</ul>
+
+						<p>💻 <strong>Programming in C/CPP and PyQT5</strong></p>
+							<ul>
+								<li>&bull;&emsp; Effective programming for STM8 microcontrollers.</li>
+								<li>&bull;&emsp; GUI development using PyQT5.</li>
+							</ul>
+
+						<h4>Why choose me:</h4>
+
+						<p>🌟 Extensive practical experience in electronics development.</p>
+						<p>🏭 Deep immersion in the subject area for a clearer understanding of business problems.</p>
+						<p>📈 I work with the latest technologies to achieve the best results.</p>
+						<p>💼 I support the entire development cycle - from the beginning of the idea to the launch of the product.</p>
+
+						<h4>Platforms and tools that I use:</h4>
+
+							<ul>
+								<li>&bull;&emsp; KiCAD, EasyEDA, Altium Designer</li>
+								<li>&bull;&emsp; IAR Embedded Workbench, STVD, Keil uVision</li>
+								<li>&bull;&emsp; LTSpice for analog circuit modeling</li>
+							</ul>
+
+						<p>🔗 With me you get electronics that meet your expectations, optimized and ready for a successful launch.</p>
+
+						<p>
+							<a href="#contact" class="sidebar-nav-link" data-section="contact">
+								Write if you want to discuss a project!
+							</a>
+						</p>
+						</div>
+					</details>
+					
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="about-box">
+                            <p class="about-box-label">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                                Philosophy
+                            </p>
+                            <p class="text-gray-600 text-sm">Design real PCBs. Build real hardware. Sharing the results with the world.</p>
+                        </div>
+                        <div class="about-box">
+                            <p class="about-box-label">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                                Stack
+                            </p>
+                            <p class="text-gray-600 text-sm">PCB design with KiCAD &amp; EasyEDA. Circuit simulation and analysis with LTspice.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-center md:justify-end items-start">
+                    <div class="w-40 h-40 rounded-full overflow-hidden border-4 shadow-lg flex-shrink-0" style="border-color:#F0513830;">
+                        <img src="screens/avatar.webp" alt="Dmytro Popadiuk" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Apps -->
+        <section id="featured" class="mx-6 mb-6">
+            <div class="flex items-center justify-between mb-5">
+                <h2 class="section-heading">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F05138" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    What I've Shipped
+                </h2>
+                <a href="PCBs.html" class="text-[#F05138] hover:text-[#D93F25] font-medium flex items-center gap-1 transition text-sm">
+                    See all PCBs
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </div>
+            <div class="grid md:grid-cols-3 gap-5">
+
+                <!-- Sound card -->
+                <div class="featured-card reveal bg-white rounded-2xl shadow-sm overflow-hidden flex flex-col">
+                    <div class="flex items-center justify-center p-5 bg-gray-50" style="height:260px;">
+                        <img src="screens/Sound_card_1.png" alt="Sound_card_ app" class="h-full max-w-full object-contain drop-shadow-lg">
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-bold text-gray-900 text-lg" style="font-family:'Poppins',sans-serif;">Sound card</h3>
+                            <span class="text-xs text-gray-400" style="font-family:'DM Mono',monospace;">2025</span>
+                        </div>
+                        <p class="text-gray-500 text-sm mb-4 flex-grow leading-relaxed">A practical electronics project designed to solve a real-world problem — from circuit design and PCB layout to a working prototype.</p>
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full text-xs">KiCAD</span>
+                            <span class="bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full text-xs">4 layers</span>
+                            <span class="bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full text-xs">Prototype</span>
+                        </div>
+                        <div class="flex items-center gap-4 flex-wrap">
+                            <a href="video.html#Sound-card_PCB_Yellow" target="_self" class="app-store-link">
+                                <img src="icons/video-icon.svg" alt="Download on the App Store" class="app-store-badge-img">
+                            </a>
+                            <a href="PCBs.html#Sound_card_text" class="text-sm font-semibold text-gray-700 hover:text-gray-900 inline-flex items-center gap-1">Learn more <span aria-hidden="true">&rarr;</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Miniature Regulated DC/DC -->
+                <div class="featured-card reveal bg-white rounded-2xl shadow-sm overflow-hidden flex flex-col">
+                    <div class="flex items-center justify-center p-5 bg-gray-50" style="height:260px;">
+                        <img src="screens/Miniature_DC-DC_1.png" alt="Gratitude Bestie app" class="h-full max-w-full object-contain drop-shadow-lg">
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-bold text-gray-900 text-lg" style="font-family:'Poppins',sans-serif;">Miniature DC/DC</h3>
+                            <span class="text-xs text-gray-400" style="font-family:'DM Mono',monospace;">2025</span>
+                        </div>
+                        <p class="text-gray-500 text-sm mb-4 flex-grow leading-relaxed">Small DC-DC converter with a button to switch the output voltage and a screen to display the voltage.</p>
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full text-xs">LTspice</span> 
+                            <span class="bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full text-xs">KiCAD</span>
+                            <span class="bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full text-xs">JLCPCB</span>
+                        </div>
+                        <div class="flex items-center gap-4 flex-wrap">
+                            <a href="video.html#advanced-miniature-pcb-power-supply-design-flexible-output-voltage-control-adc-dac-stm8-embedded-microcontroller-precise-feedback-3digit-7segment-display" target="_self" class="app-store-link">
+                                <img src="icons/video-icon.svg" alt="Download on the App Store" class="app-store-badge-img">
+                            </a>
+                            <a href="PCBs.html#Miniature_DC-DC_text" class="text-sm font-semibold text-gray-700 hover:text-gray-900 inline-flex items-center gap-1">Learn more <span aria-hidden="true">&rarr;</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panelization of USB-C -->
+                <div class="featured-card reveal bg-white rounded-2xl shadow-sm overflow-hidden flex flex-col">
+                    <div class="flex items-center justify-center p-5 bg-gray-50" style="height:260px;">
+                        <img src="screens/Panelization_of_USB-C_1.png" alt="Tap Duel app" class="h-full max-w-full object-contain drop-shadow-lg">
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-bold text-gray-900 text-lg" style="font-family:'Poppins',sans-serif;">Panelization of USB-C</h3>
+                            <span class="text-xs text-gray-400" style="font-family:'DM Mono',monospace;">2025</span>
+                        </div>
+                        <p class="text-gray-500 text-sm mb-4 flex-grow leading-relaxed">Improving PCB layout to optimize production process and price of the final product.</p>
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full text-xs">Panelization</span>
+                            <span class="bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full text-xs">V-CUT</span>
+                            <span class="bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full text-xs">KiCAD</span>							
+                        </div>
+                        <div class="flex items-center gap-4 flex-wrap">
+                          <a href="video.html#Show_V-cut_PCB" target="_self" class="app-store-link">
+                                <img src="icons/video-icon.svg" alt="Download on the App Store" class="app-store-badge-img">
+                            </a>
+                            <a href="PCBs.html#Panelization_of_USB-C_Text" class="text-sm font-semibold text-gray-700 hover:text-gray-900 inline-flex items-center gap-1">Learn more <span aria-hidden="true">&rarr;</span></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Quick links -->
+        <section class="mx-6 mb-6 grid md:grid-cols-3 gap-4 reveal">
+            <a href="PCBs.html" class="explore-card flex items-center gap-4 bg-white rounded-2xl shadow-sm p-5 group no-underline">
+                <div class="w-10 h-10 bg-[#fff0ed] rounded-xl flex items-center justify-center flex-shrink-0">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F05138" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                </div>
+                <div class="min-w-0">
+                    <p class="font-semibold text-gray-800 text-sm group-hover:text-[#F05138] transition" style="font-family:'Poppins',sans-serif;">All 6 PCBs</p>
+                    <p class="text-gray-400 text-xs mt-0.5">Full catalogue with screenshots and tech stack</p>
+                </div>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D2D2D7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="ml-auto flex-shrink-0"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+            <a href="video.html" class="explore-card flex items-center gap-4 bg-white rounded-2xl shadow-sm p-5 group no-underline">
+                <div class="w-10 h-10 bg-red-50 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"></path><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon></svg>
+                </div>
+                <div class="min-w-0">
+                    <p class="font-semibold text-gray-800 text-sm group-hover:text-red-600 transition" style="font-family:'Poppins',sans-serif;">All Videos</p>
+                    <p class="text-gray-400 text-xs mt-0.5">Video reviews of designed PCBs</p>
+                </div>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D2D2D7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="ml-auto flex-shrink-0"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+            <a href="index.html#services" target="_self" class="explore-card flex items-center gap-4 bg-white rounded-2xl shadow-sm p-5 group no-underline">
+                <div class="w-10 h-10 bg-green-50 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                </div>
+                <div class="min-w-0">
+                    <p class="font-semibold text-gray-800 text-sm group-hover:text-green-700 transition" style="font-family:'Poppins',sans-serif;">My services</p>
+                    <p class="text-gray-400 text-xs mt-0.5">List of services and technologies I work with</p>
+                </div>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D2D2D7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="ml-auto flex-shrink-0"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="bg-white rounded-2xl shadow-sm mx-6 mb-6 p-8 reveal">
+            <h2 class="section-heading mb-2">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F05138" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                Get in Touch
+            </h2>
+            <p class="text-gray-500 mb-6 text-base">Open to PCB freelance projects, cooperations in the field of electronics, full-time roles, and interesting conversations.</p>
+            <div class="flex flex-col items-start space-y-4">
+                <div id="email-contact" class="flex items-center flex-wrap gap-3">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F05138" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    <button id="emailBtn" type="button" aria-label="Email me" class="text-[#F05138] hover:text-[#D93F25] underline text-sm font-medium">Email me</button>
+                    <select id="emailSubject" class="border border-gray-200 rounded-lg px-3 py-1.5 text-sm text-gray-600 focus:outline-none focus:border-[#F05138] transition" aria-label="Pick a subject">
+                        <option value="Creating%20Electrical%20Diagrams">Creating electrical diagrams</option>
+                        <option value="Freelance%20PCB%20Project">Freelance PCB Project</option>
+                        <option value="Embedded%20Systems%20Programming">Embedded systems programming</option>
+                        <option value="Electronics%20Testing%20Inspection">Electronics testing/inspection</option>
+                        <option value="Full%20Time%20Opportunity">Full-Time Opportunity</option>
+                        <option value="General%20Inquiry">General Inquiry</option>
+                    </select>
+                    <button id="copyEmailBtn" type="button" class="text-gray-400 hover:text-gray-700 text-sm underline transition">Copy email</button>
+                    <noscript><span class="text-gray-600 text-sm">assis [at] i [dot] ua</span></noscript>
+                </div>
+                <a href="https://www.upwork.com/freelancers/~01f2a1a67598894509?mp_source=share" target="_blank" class="flex items-center gap-2 text-gray-500 hover:text-red-600 transition text-sm">
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="#14A800">
+						<path d="M18.2 7.1c-1.8 0-3.3 1.1-4.2 2.7-.5-.9-.9-2-1.2-3.1h-3v5.1c0 1.4-.6 2.3-1.7 2.3-1 0-1.6-.9-1.6-2.3V6.7h-3v5.1c0 3.1 1.8 5.2 4.6 5.2 1.5 0 2.7-.7 3.5-1.9.5.9 1 1.8 1.6 2.7h3.4c-.9-1.2-1.7-2.5-2.3-3.7.8-1.3 1.8-2 3-2 1.1 0 2 .8 2 2s-.9 2-2.1 2c-.5 0-.9-.1-1.3-.3l-.8 2.8c.7.3 1.5.5 2.3.5 2.8 0 4.9-2.1 4.9-5s-2.1-5-4.1-5z"/>
+					</svg>
+                    Upwork
+                </a>
+                <a href="https://www.fiverr.com/s/ye2RyzG" target="_blank" class="flex items-center gap-2 text-gray-500 hover:text-red-600 transition text-sm">
+					<span class="text-green-500 hover:text-green-600">
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+							<path d="M14.5 4C11.46 4 9 6.46 9 9.5V10H6v3h3v6H6v3h9v-3h-3v-6h4v-3h-4v-.5c0-1.1.9-2 2-2h2V4h-1.5z"/>
+							<circle cx="17.5" cy="7" r="1.5"/>
+						</svg>
+					</span>
+                    Fiverr
+                </a>
+                <a href="https://freelancehunt.com/freelancer/Dmytro_Popadiuk.html" target="_blank" class="flex items-center gap-2 text-gray-500 hover:text-red-600 transition text-sm">
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="#ffbb17">
+						<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10
+								 10-4.48 10-10S17.52 2 12 2zm0 3
+								 c3.87 0 7 3.13 7 7 0 1.55-.5 2.98-1.35 4.14
+								 l-3.07-3.07c.27-.46.42-.99.42-1.57
+								 0-1.66-1.34-3-3-3-.58 0-1.11.16-1.57.42L7.36 5.85
+								 A6.96 6.96 0 0 1 12 5zm-7 7c0-1.55.5-2.98 1.35-4.14
+								 l3.07 3.07c-.27.46-.42.99-.42 1.57
+								 0 1.66 1.34 3 3 3 .58 0 1.11-.16 1.57-.42l3.07 3.07
+								 A6.96 6.96 0 0 1 12 19c-3.87 0-7-3.13-7-7z"/>
+					</svg>
+                    
+                   Freelancehunt
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="mx-6 mb-8 py-5 border-t border-gray-200">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-gray-400">
+                <p>&copy; 2026 Dmytro Popadiuk. All rights reserved.</p>
+                <a href="Privacy.html" class="hover:text-gray-600 transition">Privacy Policy</a>
+            </div>
+        </footer>
+
+    </div><!-- /.main-content -->
+
+    <script>
+        // ── Mobile sidebar ──
+        (function () {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            const burgerBtn = document.getElementById('burger-btn');
+            function open()  { sidebar.classList.add('open'); overlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
+            function close() { sidebar.classList.remove('open'); overlay.classList.remove('open'); document.body.style.overflow = ''; }
+            burgerBtn?.addEventListener('click', open);
+            overlay?.addEventListener('click', close);
+            sidebar?.querySelectorAll('.sidebar-nav-link').forEach(l => l.addEventListener('click', () => { if (window.innerWidth < 769) close(); }));
+        })();
+
+        // ── Sidebar active state on scroll ──
+        (function () {
+            const sectionIds = ['about', 'featured', 'contact'];
+            const linkMap = {
+                about:    document.querySelector('.sidebar-nav-link[data-section="about"]'),
+                featured: document.querySelector('.sidebar-nav-link[data-page="apps"]'),
+                contact:  document.querySelector('.sidebar-nav-link[data-section="contact"]'),
+            };
+            const obs = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (!e.isIntersecting) return;
+                    document.querySelectorAll('.sidebar-nav-link').forEach(l => l.classList.remove('active'));
+                    const link = linkMap[e.target.id];
+                    if (link) link.classList.add('active');
+                });
+            }, { threshold: 0.35 });
+            sectionIds.forEach(id => { const el = document.getElementById(id); if (el) obs.observe(el); });
+        })();
+
+        // ── Smooth scroll ──
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // ── Email obfuscation ──
+        (function () {
+            const u = 'sissa'.split('').reverse().join('');
+            const d = 'au.i'.split('').reverse().join('');
+            const email = `${u}@${d}`;
+            const subjectSelect = document.getElementById('emailSubject');
+            const emailBtn = document.getElementById('emailBtn');
+            const copyBtn = document.getElementById('copyEmailBtn');
+            if (emailBtn) {
+                emailBtn.addEventListener('click', () => {
+                    const subj = subjectSelect?.value ? `?subject=${subjectSelect.value}` : '';
+                    window.location.href = `mailto:${email}${subj}`;
+                });
+            }
+            if (copyBtn && navigator.clipboard) {
+                copyBtn.addEventListener('click', async () => {
+                    try {
+                        await navigator.clipboard.writeText(email);
+                        const orig = copyBtn.textContent;
+                        copyBtn.textContent = 'Copied!';
+                        setTimeout(() => (copyBtn.textContent = orig), 1500);
+                    } catch (e) { copyBtn.textContent = email; }
+                });
+            }
+        })();
+
+        // ── Scroll reveal ──
+        const revealObs = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => entry.target.classList.add('visible'), i * 80);
+                    revealObs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.08 });
+        document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+    </script>
+</body>
+</html>

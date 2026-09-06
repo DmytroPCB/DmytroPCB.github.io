@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCBs — Dmytro Popadiuk | PCB Designer</title>
+    <meta name="description" content="6 PCB designs and electronics projects by Dmytro Popadiuk — PCB designer and electronics engineer building with KiCad, EasyEDA, and LTspice. Circuit design, embedded hardware, and custom electronics.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="PCBs — Dmytro Popadiuk | PCB Designer">
+    <meta property="og:description" content="6 PCBs projects. Each one started as a problem I wanted to solve. Built with building with KiCad, EasyEDA, and LTspice.">
+    <meta property="og:url" content="https://ndcswift.github.io/PCBs.html">
+    <meta property="og:image" content="screens/avatar.webp">
+    <meta property="og:site_name" content="Dmytro Popadiuk">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="PCBs — Dmytro Popadiuk | PCB Designer">
+    <meta name="twitter:description" content="6 PCBs projects. Productivity, compactness, and reliability — built with KiCad, EasyEDA, and LTspice.">
+    <link rel="canonical" href="https://ndcswift.github.io/PCBs.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&family=DM+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="portfolio.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <style>
+        body { font-family: 'DM Sans', sans-serif; }
+        h1, h2, h3 { font-family: 'Poppins', sans-serif; }
+
+        /* ── Skill pills ── */
+        .skill-pill { transition: all 0.3s ease; cursor: default; }
+        .skill-pill:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+
+        /* ── Slide Carousel ── */
+        .screens-viewport {
+            overflow: hidden;
+            border-radius: 14px;
+            background: #f5f5f7;
+        }
+        .screens-track-slide {
+            display: flex;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform;
+        }
+        .screens-track-slide img {
+            width: 100%;
+            flex-shrink: 0;
+            object-fit: contain;
+            max-height: 400px;
+            padding: 16px;
+            border-radius: 16px;
+        }
+        .screens-bottom {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 0 0;
+        }
+        .carousel-btn-new {
+            width: 34px; height: 34px;
+            border-radius: 50%;
+            border: none;
+            background: #F05138;
+            color: white;
+            font-size: 22px;
+            line-height: 1;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+            transition: background 0.2s, transform 0.1s;
+            padding: 0;
+        }
+        .carousel-btn-new:hover:not(:disabled) { background: #D93F25; transform: scale(1.08); }
+        .carousel-btn-new:disabled { background: #e2e8f0; color: #94a3b8; cursor: default; transform: none; }
+        .carousel-progress-bar {
+            flex: 1; height: 3px;
+            background: #e2e8f0; border-radius: 2px; overflow: hidden;
+        }
+        .carousel-progress-fill {
+            height: 100%; background: #F05138;
+            border-radius: 2px;
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 0%;
+        }
+        .carousel-counter-text {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px; color: #94a3b8;
+            min-width: 38px; text-align: right;
+        }
+
+        /* ── Filter ── */
+        .filter-bar { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 32px; }
+        .filter-btn {
+            padding: 8px 22px; border-radius: 99px;
+            border: 2px solid #e2e8f0; background: white;
+            font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 600;
+            color: #64748b; cursor: pointer; transition: all 0.2s;
+        }
+        .filter-btn.active, .filter-btn:hover {
+            border-color: #F05138; background: #F05138; color: white;
+        }
+        .filtered-out { display: none !important; }
+
+        /* ── Scroll Reveal ── */
+        .reveal-card {
+            opacity: 0; transform: translateY(28px);
+            transition: opacity 0.55s ease, transform 0.55s ease;
+        }
+        .reveal-card.visible { opacity: 1; transform: translateY(0); }
+
+        /* ── Live Status Dot ── */
+        .status-dot {
+            display: inline-block; width: 8px; height: 8px;
+            border-radius: 50%; background: #22c55e;
+            margin-right: 5px; vertical-align: middle;
+            animation: pulse-g 2s infinite;
+        }
+        @keyframes pulse-g {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.4); }
+            50% { box-shadow: 0 0 0 6px rgba(34,197,94,0); }
+        }
+
+        /* ── App Store Badge ── */
+        .app-store-badge-img { height: 44px; display: block; transition: opacity 0.2s; }
+        .app-store-link:hover .app-store-badge-img { opacity: 0.8; }
+
+        /* ── Category Tag ── */
+        .app-category-tag {
+            display: inline-block;
+            font-family: 'DM Mono', monospace; font-size: 11px;
+            font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
+            color: #F05138; background: #fff0ed;
+            padding: 3px 10px; border-radius: 6px; margin-bottom: 10px;
+        }
+
+        /* ── App Card ── */
+        .app-card { transition: box-shadow 0.3s ease; }
+
+        /* ── Mobile ── */
+        @media (max-width: 768px) {
+            main { padding-top: 5rem !important; }
+            .screens-track-slide img { max-height: 260px; }
+            .app-card .grid { grid-template-columns: 1fr !important; }
+        }
+    </style>
+</head>
+<body class="bg-[#F5F5F7] antialiased">
+
+    <!-- Mobile burger -->
+    <button id="burger-btn" class="burger-btn" aria-label="Open menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+    </button>
+    <div id="sidebar-overlay" class="sidebar-overlay" role="presentation"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar" role="navigation" aria-label="Site navigation">
+        <div class="sidebar-inner">
+            <div class="sidebar-brand">
+                <a href="index.html" class="sidebar-name">Dmytro Popadiuk</a>
+                <p class="sidebar-tagline">PCB Designer</p>
+            </div>
+            <hr class="sidebar-divider">
+            <nav class="sidebar-nav">
+                <a href="index.html"       class="sidebar-nav-link">Home</a>
+                <a href="PCBs.html"        class="sidebar-nav-link active">PCBs</a>
+                <a href="video.html"     class="sidebar-nav-link">Video</a>
+                <a href="index.html#contact" class="sidebar-nav-link">Contact</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="https://www.upwork.com/freelancers/~01f2a1a67598894509?mp_source=share" target="_blank" rel="noopener" class="sidebar-social" aria-label="Upwork">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18.2 7.1c-1.8 0-3.3 1.1-4.2 2.7-.5-.9-.9-2-1.2-3.1h-3v5.1c0 1.4-.6 2.3-1.7 2.3-1 0-1.6-.9-1.6-2.3V6.7h-3v5.1c0 3.1 1.8 5.2 4.6 5.2 1.5 0 2.7-.7 3.5-1.9.5.9 1 1.8 1.6 2.7h3.4c-.9-1.2-1.7-2.5-2.3-3.7.8-1.3 1.8-2 3-2 1.1 0 2 .8 2 2s-.9 2-2.1 2c-.5 0-.9-.1-1.3-.3l-.8 2.8c.7.3 1.5.5 2.3.5 2.8 0 4.9-2.1 4.9-5s-2.1-5-4.1-5z"/></svg>
+                </a>
+                 <a href="https://www.fiverr.com/s/ye2RyzG" target="_blank" rel="noopener" class="sidebar-social" aria-label="YouTube">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4C11.46 4 9 6.46 9 9.5V10H6v3h3v6H6v3h9v-3h-3v-6h4v-3h-4v-.5c0-1.1.9-2 2-2h2V4h-1.5z"/>
+							<circle cx="17.5" cy="7" r="1.5"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon></svg>
+                </a>
+                <a href="https://freelancehunt.com/freelancer/Dmytro_Popadiuk.html" target="_blank" rel="noopener" class="sidebar-social" aria-label="toolbit.dev">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10
+								 10-4.48 10-10S17.52 2 12 2zm0 3
+								 c3.87 0 7 3.13 7 7 0 1.55-.5 2.98-1.35 4.14
+								 l-3.07-3.07c.27-.46.42-.99.42-1.57
+								 0-1.66-1.34-3-3-3-.58 0-1.11.16-1.57.42L7.36 5.85
+								 A6.96 6.96 0 0 1 12 5zm-7 7c0-1.55.5-2.98 1.35-4.14
+								 l3.07 3.07c-.27.46-.42.99-.42 1.57
+								 0 1.66 1.34 3 3 3 .58 0 1.11-.16 1.57-.42l3.07 3.07
+								 A6.96 6.96 0 0 1 12 19c-3.87 0-7-3.13-7-7z"/>
+				    </svg>
+                </a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main content -->
+    <div class="main-content">
+    <main class="container mx-auto px-4 py-12">
+
+        <!-- Page Header -->
+        <div class="mb-10">
+            <h1 class="text-4xl font-bold text-gray-900 mb-2">My PCBs</h1>
+            <p class="text-gray-500 text-lg">6 PCBs that were manufactured. Each of them solves a specific problem in the real world. </p>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="filter-bar">
+            <button class="filter-btn active" data-filter="all">All PCBs</button>
+            <button class="filter-btn" data-filter="productivity">Productivity</button>
+            <button class="filter-btn" data-filter="games">Compactness</button>
+            <button class="filter-btn" data-filter="wellness">Reliability</button>
+        </div>
+
+        <!-- PCBs Cards -->
+        <section class="mb-16">
+
+            <!-- Sound card -->
+            <div id="Sound_card_text" class="app-card reveal-card bg-white rounded-2xl shadow-sm overflow-hidden mb-8" data-category="productivity">
+                <div class="grid md:grid-cols-2 gap-0">
+                    <div class="p-8">
+                        <span class="app-category-tag">Productivity</span>
+                        <div class="flex items-start justify-between mb-1">
+                            <h2 class="text-2xl font-bold text-gray-900">Sound card</h2>
+                            <div class="bg-gray-800 text-white px-3 py-1 rounded-lg flex-shrink-0 text-sm font-semibold ml-3">2025</div>
+                        </div>
+                        <div class="text-sm mb-4" style="color:#16a34a;"><span class="status-dot"></span>Passed all the tests</div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">KiCAD</span>
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">USB-C</span>
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">4 layers</span>                            
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Prototype</span>
+                        </div>
+                        <p class="text-gray-600 mb-5 leading-relaxed text-sm">
+                            Here is a prototype of a sound card. The main idea was that there should be 4 independent channels of sound processing and it should all be compact enough for wearable electronics. Therefore, all the debugging pins are immediately connected to the prototype and the test microphones are connected to their boards using "mouse ears".
+                        </p>
+                        <ul class="space-y-2 mb-6 text-sm text-gray-600">
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Creation of an electrical diagram according to the provided technical specifications</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Selection and coordination of components with the customer</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Component placement and PCB assembly according to customer's case</span></li>
+                        </ul>
+                        <div class="flex items-center gap-4 flex-wrap">
+                           <a href="video.html#Sound-card_PCB_Yellow" target="_self" class="app-store-link">
+                                <img src="icons/video-icon.svg" alt="Watch the video" class="app-store-badge-img">
+                            </a>
+                            <a href="#skills" class="text-sm font-semibold text-gray-700 hover:text-gray-900 inline-flex items-center gap-1">Learn more <span aria-hidden="true">&rarr;</span></a>
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col justify-center bg-gray-50">
+                        <div class="screens-carousel">
+                            <div class="screens-viewport" tabindex="0">
+                                <div class="screens-track-slide">
+                                    <img src="screens/Sound_card_1.png" alt="Sound_card_ screenshot 1">
+                                    <img src="screens/Sound_card_2.png" alt="Sound_card_ screenshot 2">
+                                    <img src="screens/Sound_card_3.png" alt="Sound_card_ screenshot 3">
+                                    <img src="screens/Sound_card_4.png" alt="Sound_card_ screenshot 4">
+                                    <img src="screens/Sound_card_5.png" alt="Sound_card_ screenshot 5">
+                                    <img src="screens/Sound_card_6.png" alt="Sound_card_ screenshot 6">
+                                </div>
+                            </div>
+                            <div class="screens-bottom">
+                                <button class="carousel-btn-new carousel-prev-new" aria-label="Previous">&#8249;</button>
+                                <div class="carousel-progress-bar"><div class="carousel-progress-fill"></div></div>
+                                <button class="carousel-btn-new carousel-next-new" aria-label="Next">&#8250;</button>
+                                <span class="carousel-counter-text">1 / 6</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Miniature Regulated DC/DC -->
+            <div id="Miniature_DC-DC_text" class="app-card reveal-card bg-white rounded-2xl shadow-sm overflow-hidden mb-8" data-category="wellness">
+                <div class="grid md:grid-cols-2 gap-0">
+                    <div class="p-8">
+                        <span class="app-category-tag">Wellness</span>
+                        <div class="flex items-start justify-between mb-1">
+                            <h2 class="text-2xl font-bold text-gray-900">Miniature DC/DC</h2>
+                            <div class="bg-gray-800 text-white px-3 py-1 rounded-lg flex-shrink-0 text-sm font-semibold ml-3">2025</div>
+                        </div>
+                        <div class="text-sm mb-4" style="color:#16a34a;"><span class="status-dot"></span>Passed all the tests</div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">KiCAD</span>
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">LTspice</span>
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">STM8</span>
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">JLCPCB</span>
+                        </div>
+                        <p class="text-gray-600 mb-5 leading-relaxed text-sm">
+							The task was to make a miniature controlled converter with an output voltage indication. The converter is controlled by the STM8, switching is carried out by changing the resistance of the DAC, which in turn changes the feedback on the DCDC. At the same time, the STM8 measures the input and output voltages using the built-in ADC, displays the information on the screen, and polls the button.
+                        </p>
+                        <ul class="space-y-2 mb-6 text-sm text-gray-600">
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Compact overall dimensions</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Microprocessor control of the device operation</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Embedded software developed to customer requirements</span></li>
+                        </ul>
+                        <div class="flex items-center gap-4 flex-wrap">
+                            <a href="video.html#advanced-miniature-pcb-power-supply-design-flexible-output-voltage-control-adc-dac-stm8-embedded-microcontroller-precise-feedback-3digit-7segment-display" target="_self" class="app-store-link">
+                                <img src="icons/video-icon.svg" alt="Download on the App Store" class="app-store-badge-img">
+                            </a>
+                            <a href="#skills" class="text-sm font-semibold text-gray-700 hover:text-gray-900 inline-flex items-center gap-1">Learn more <span aria-hidden="true">&rarr;</span></a>
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col justify-center bg-gray-50">
+                        <div class="screens-carousel">
+                            <div class="screens-viewport" tabindex="0">
+                                <div class="screens-track-slide">
+                                    <img src="screens/Miniature_DC-DC_1.png" alt="Gratitude Bestie screenshot 1">
+                                    <img src="screens/Miniature_DC-DC_2.png" alt="Gratitude Bestie screenshot 2">
+                                    <img src="screens/Miniature_DC-DC_3.png" alt="Gratitude Bestie screenshot 3">
+                                    <img src="screens/Miniature_DC-DC_4.png" alt="Gratitude Bestie screenshot 4">
+                                    <img src="screens/Miniature_DC-DC_5.png" alt="Gratitude Bestie screenshot 5">
+                                    <img src="screens/Miniature_DC-DC_6.png" alt="Gratitude Bestie screenshot 6">
+                                    <img src="screens/Miniature_DC-DC_7.png" alt="Gratitude Bestie screenshot 7">
+                                    <img src="screens/Miniature_DC-DC_8.png" alt="Gratitude Bestie screenshot 8">
+                                    <img src="screens/Miniature_DC-DC_9.png" alt="Gratitude Bestie screenshot 9">
+                                    <img src="screens/Miniature_DC-DC_10.png" alt="Gratitude Bestie screenshot 10">
+                                </div>
+                            </div>
+                            <div class="screens-bottom">
+                                <button class="carousel-btn-new carousel-prev-new" aria-label="Previous">&#8249;</button>
+                                <div class="carousel-progress-bar"><div class="carousel-progress-fill"></div></div>
+                                <button class="carousel-btn-new carousel-next-new" aria-label="Next">&#8250;</button>
+                                <span class="carousel-counter-text">1 / 10</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panelization of USB-C -->
+            <div id="Panelization_of_USB-C_Text" class="app-card reveal-card bg-white rounded-2xl shadow-sm overflow-hidden mb-8" data-category="games">
+                <div class="grid md:grid-cols-2 gap-0">
+                    <div class="p-8">
+                        <span class="app-category-tag">Production</span>
+                        <div class="flex items-start justify-between mb-1">
+                            <h2 class="text-2xl font-bold text-gray-900">Panelization of USB-C</h2>
+                            <div class="bg-gray-800 text-white px-3 py-1 rounded-lg flex-shrink-0 text-sm font-semibold ml-3">2025</div>
+                        </div>
+                        <div class="text-sm mb-4" style="color:#16a34a;"><span class="status-dot"></span>Successfully manufactured</div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">JLCPCB</span>
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">V-CUT</span>
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Optimization</span>
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Panelization</span>
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">KiCAD</span>
+                        </div>
+                        <p class="text-gray-600 mb-5 leading-relaxed text-sm">
+                            A custom PCB design featuring carefully engineered panelization for six pairs USB-C connectors (both Female and Male). The board incorporates a distinctive V-CUT design, which improves segmentation and assembly. It also leverages advanced fresering manufacturing techniques for robust and efficient production.
+
+							Additionally, I developed specialized soldering windows for the connectors, ensuring precise soldering during the factory assembly process.
+                        </p>
+                        <ul class="space-y-2 mb-6 text-sm text-gray-600">
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Using V-CUT(V-scoring/V-grooving) technology when designing a PCB panel</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Production optimization at the design stage</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Increases the number of products on the panel</span></li>
+                        </ul>
+                        <div class="flex items-center gap-4 flex-wrap">
+                           <a href="video.html#Show_V-cut_PCB" target="_self" class="app-store-link">
+                                <img src="icons/video-icon.svg" alt="Download on the App Store" class="app-store-badge-img">
+                            </a>
+                            <a href="#skills" class="text-sm font-semibold text-gray-700 hover:text-gray-900 inline-flex items-center gap-1">Learn more <span aria-hidden="true">&rarr;</span></a>
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col justify-center bg-gray-50">
+                        <div class="screens-carousel">
+                            <div class="screens-viewport" tabindex="0">
+                                <div class="screens-track-slide">
+                                    <img src="screens/Panelization_of_USB-C_1.png" alt="Tap Duel screenshot 1">
+                                    <img src="screens/Panelization_of_USB-C_2.png" alt="Tap Duel screenshot 2">
+                                    <img src="screens/Panelization_of_USB-C_3.png" alt="Tap Duel screenshot 3">
+                                    <img src="screens/Panelization_of_USB-C_4.png" alt="Tap Duel screenshot 4">
+                                    <img src="screens/Panelization_of_USB-C_5.png" alt="Tap Duel screenshot 5">
+                                    <img src="screens/Panelization_of_USB-C_6.png" alt="Tap Duel screenshot 6">
+                                </div>
+                            </div>
+                            <div class="screens-bottom">
+                                <button class="carousel-btn-new carousel-prev-new" aria-label="Previous">&#8249;</button>
+                                <div class="carousel-progress-bar"><div class="carousel-progress-fill"></div></div>
+                                <button class="carousel-btn-new carousel-next-new" aria-label="Next">&#8250;</button>
+                                <span class="carousel-counter-text">1 / 6</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ESP32-LED-Controled_PCB -->
+            <div id="ESP32-LED-Controled_PCB_Text" class="app-card reveal-card bg-white rounded-2xl shadow-sm overflow-hidden mb-8" data-category="games">
+                <div class="grid md:grid-cols-2 gap-0">
+                    <div class="p-8">
+                        <span class="app-category-tag">LED</span>
+                        <div class="flex items-start justify-between mb-1">
+                            <h2 class="text-2xl font-bold text-gray-900">ESP32-LED Controler</h2>
+                            <div class="bg-gray-800 text-white px-3 py-1 rounded-lg flex-shrink-0 text-sm font-semibold ml-3">2026</div>
+                        </div>
+                        <div class="text-sm mb-4" style="color:#16a34a;"><span class="status-dot"></span>Passed all the tests</div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">JLCPCB</span>
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">LED</span>
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">KiCAD</span>
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">ESP32</span>
+                        </div>
+                        <p class="text-gray-600 mb-5 leading-relaxed text-sm">
+                            The task was to develop an LED controller with galvanic protection and 12V power supply. The system is controlled by ESP32, which allows remote control of the LEDs. Can be used for LED strips or high-power diodes.
+                        </p>
+                        <ul class="space-y-2 mb-6 text-sm text-gray-600">
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Additional level of protection due to galvanic isolation</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Possibility of remote control via both WiFi and Bluetooth</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Compact PCB dimensions</span></li>
+                        </ul>
+                        <div class="flex items-center gap-4 flex-wrap">
+                            <a href="video.html#ESP32-LED-Controled_PCB" target="_self" class="app-store-link">
+                                <img src="icons/video-icon.svg" alt="Download on the App Store" class="app-store-badge-img">
+                            </a>
+                            <a href="#skills" class="text-sm font-semibold text-gray-700 hover:text-gray-900 inline-flex items-center gap-1">Learn more <span aria-hidden="true">&rarr;</span></a>
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col justify-center bg-gray-50">
+                        <div class="screens-carousel">
+                            <div class="screens-viewport" tabindex="0">
+                                <div class="screens-track-slide">
+                                    <img src="screens/ESP32-LED Controler_1.png" alt="Sky Loops screenshot 1">
+                                    <img src="screens/ESP32-LED Controler_2.png" alt="Sky Loops screenshot 2">
+                                    <img src="screens/ESP32-LED Controler_3.png" alt="Sky Loops screenshot 3">
+                                    <img src="screens/ESP32-LED Controler_4.png" alt="Sky Loops screenshot 4">
+                                    <img src="screens/ESP32-LED Controler_5.png" alt="Sky Loops screenshot 5">
+                                    <img src="screens/ESP32-LED Controler_6.png" alt="Sky Loops screenshot 6">
+                                    <img src="screens/ESP32-LED Controler_7.png" alt="Sky Loops screenshot 7">
+                                </div>
+                            </div>
+                            <div class="screens-bottom">
+                                <button class="carousel-btn-new carousel-prev-new" aria-label="Previous">&#8249;</button>
+                                <div class="carousel-progress-bar"><div class="carousel-progress-fill"></div></div>
+                                <button class="carousel-btn-new carousel-next-new" aria-label="Next">&#8250;</button>
+                                <span class="carousel-counter-text">1 / 7</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Motor Controler -->
+            <div id="Motor_Controler_Text" class="app-card reveal-card bg-white rounded-2xl shadow-sm overflow-hidden mb-8" data-category="productivity">
+                <div class="grid md:grid-cols-2 gap-0">
+                    <div class="p-8">
+                        <span class="app-category-tag">Productivity</span>
+                        <div class="flex items-start justify-between mb-1">
+                            <h2 class="text-2xl font-bold text-gray-900">Motor Controler</h2>
+                            <div class="bg-gray-800 text-white px-3 py-1 rounded-lg flex-shrink-0 text-sm font-semibold ml-3">2024</div>
+                        </div>
+                        <div class="text-sm mb-4" style="color:#16a34a;"><span class="status-dot"></span>Passed all the tests</div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">KiCAD</span>
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">STM8</span>
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">STVD</span>
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">PWM</span>
+                        </div>
+                        <p class="text-gray-600 mb-5 leading-relaxed text-sm">
+                            This project delivers an optimized solution that ensures efficient motor control and accurate rotation measurement using a HALL sensor, driven by a MOSFET and managed through an STM8S003 microcontroller.
+                        </p>
+                        <ul class="space-y-2 mb-6 text-sm text-gray-600">
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Real-time rotation counting via an integrated HALL sensor</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Efficient motor drive using MOSFET technology for smooth operation</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Optimized PCB layout for performance and durability</span></li>
+                        </ul>
+                        <div class="flex items-center gap-4 flex-wrap">
+                            <a href="video.html#Motor_caunter_video" target="_self" class="app-store-link">
+                                <img src="icons/video-icon.svg" alt="Download on the App Store" class="app-store-badge-img">
+                            </a>
+                            <a href="#skills" class="text-sm font-semibold text-gray-700 hover:text-gray-900 inline-flex items-center gap-1">Learn more <span aria-hidden="true">&rarr;</span></a>
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col justify-center bg-gray-50">
+                        <div class="screens-carousel">
+                            <div class="screens-viewport" tabindex="0">
+                                <div class="screens-track-slide">
+                                    <img src="screens/Motor_Controler_1.png" alt="Motor_Controler_ screenshot 1">
+                                    <img src="screens/Motor_Controler_2.png" alt="Motor_Controler_ screenshot 2">
+                                    <img src="screens/Motor_Controler_3.png" alt="Motor_Controler_ screenshot 3">
+                                    <img src="screens/Motor_Controler_4.png" alt="Motor_Controler_ screenshot 4">
+                                    <img src="screens/Motor_Controler_5.png" alt="Motor_Controler_ screenshot 5">
+                                    <img src="screens/Motor_Controler_6.png" alt="Motor_Controler_ screenshot 6">
+                                    <img src="screens/Motor_Controler_7.png" alt="Motor_Controler_ screenshot 7">
+                                </div>
+                            </div>
+                            <div class="screens-bottom">
+                                <button class="carousel-btn-new carousel-prev-new" aria-label="Previous">&#8249;</button>
+                                <div class="carousel-progress-bar"><div class="carousel-progress-fill"></div></div>
+                                <button class="carousel-btn-new carousel-next-new" aria-label="Next">&#8250;</button>
+                                <span class="carousel-counter-text">1 / 7</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Daily Devotion -->
+            <div id="Relay_board_Text" class="app-card reveal-card bg-white rounded-2xl shadow-sm overflow-hidden mb-8" data-category="wellness">
+                <div class="grid md:grid-cols-2 gap-0">
+                    <div class="p-8">
+                        <span class="app-category-tag">Relay board</span>
+                        <div class="flex items-start justify-between mb-1">
+                            <h2 class="text-2xl font-bold text-gray-900">Relay board</h2>
+                            <div class="bg-gray-800 text-white px-3 py-1 rounded-lg flex-shrink-0 text-sm font-semibold ml-3">2026</div>
+                        </div>
+                        <div class="text-sm mb-4" style="color:#16a34a;"><span class="status-dot"></span>Passed all the tests</div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">KiCAD</span>
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">JLCPCB</span>
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">2 layers</span>
+							<span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Prototype</span> 
+                        </div>
+                        <p class="text-gray-600 mb-5 leading-relaxed text-sm">
+                            The task was to create a controller for a washing machine that could be configured to the needs of the equipment. An electrical diagram was created, a component base was selected, and design solutions for the placement of control elements, ports, and mounting were agreed upon.
+                        </p>
+                        <ul class="space-y-2 mb-6 text-sm text-gray-600">
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Galvanic isolation of control ports</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>12 independent relays for equipment control</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>LCD screen for information display</span></li>
+                        </ul>
+                        <div class="flex items-center gap-4 flex-wrap">
+                           <a href="video.html#Ardruino-relay-BRD_Video" target="_self" class="app-store-link">
+                                <img src="icons/video-icon.svg" alt="Download on the App Store" class="app-store-badge-img">
+                            </a>
+                            <a href="#skills" class="text-sm font-semibold text-gray-700 hover:text-gray-900 inline-flex items-center gap-1">Learn more <span aria-hidden="true">&rarr;</span></a>
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col justify-center bg-gray-50">
+                        <div class="screens-carousel">
+                            <div class="screens-viewport" tabindex="0">
+                                <div class="screens-track-slide">
+                                    <img src="screens/Relay_board_1.png" alt="Daily Devotion screenshot 1">
+                                    <img src="screens/Relay_board_2.png" alt="Daily Devotion screenshot 2">
+                                    <img src="screens/Relay_board_3.png" alt="Daily Devotion screenshot 3">
+                                    <img src="screens/Relay_board_4.png" alt="Daily Devotion screenshot 4">
+                                    <img src="screens/Relay_board_5.png" alt="Daily Devotion screenshot 5">
+                                </div>
+                            </div>
+                            <div class="screens-bottom">
+                                <button class="carousel-btn-new carousel-prev-new" aria-label="Previous">&#8249;</button>
+                                <div class="carousel-progress-bar"><div class="carousel-progress-fill"></div></div>
+                                <button class="carousel-btn-new carousel-next-new" aria-label="Next">&#8250;</button>
+                                <span class="carousel-counter-text">1 / 5</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- In the Lab -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                <i data-feather="terminal" class="mr-3" style="color:#F05138;"></i> In the Lab
+            </h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white rounded-2xl shadow-sm p-6 border-l-4" style="border-color:#F0513860;">
+                    <div class="flex items-center justify-between mb-3">
+                        <h3 class="text-lg font-bold text-gray-800">Inverter Board</h3>
+                        <span class="bg-yellow-100 text-yellow-700 text-xs font-semibold px-2 py-1 rounded-full">In Development</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-3">Redesigning a inverter board from an existing schematic into a modern, production-ready PCB. The project involves replacing obsolete components, updating the circuit with modern electronic elements, validating key sections in LTspice, and developing the PCB layout in KiCAD with a focus on high-current paths, thermal management, isolation, and reliable power delivery.</p>
+                    <div class="flex gap-2">
+                        <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-xs">KiCAD</span>
+                        <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-xs">LTspice</span>
+						<span class="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-xs">Power Electronics</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech & Tools -->
+        <section id="skills" class="bg-white rounded-2xl shadow-sm p-8 mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-2 flex items-center">
+                <i data-feather="code" class="mr-3" style="color:#F05138;"></i> Tech &amp; Tools
+            </h2>
+            <p class="text-gray-600 mb-8">I had to work on different projects and in different teams. I successfully interacted with engineers, designers, programmers, testers, and managers. Therefore, I had to master a number of skills and programs for successful work. Here are some of them.</p>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">PCB manufacturers</h3>
+            <div class="flex flex-wrap gap-3 mb-8">
+                <span class="skill-pill bg-cyan-400 text-black px-4 py-2 rounded-full">JLCPCB</span>
+                <span class="skill-pill bg-gray-900 text-white px-4 py-2 rounded-full">PCBWAY</span>
+            </div>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">Programs &amp; Tools</h3>
+            <div class="flex flex-wrap gap-3 mb-8">
+                <span class="skill-pill bg-orange-500 text-white px-4 py-2 rounded-full">KiCAD</span>
+                <span class="skill-pill bg-blue-500 text-white px-4 py-2 rounded-full">EASYEDA</span>
+                <span class="skill-pill bg-blue-600 text-white px-4 py-2 rounded-full">Altium Designer</span>
+                <span class="skill-pill bg-pink-500 text-white px-4 py-2 rounded-full">LT-Spice</span>
+                <span class="skill-pill bg-purple-600 text-white px-4 py-2 rounded-full">IAR</span>
+                <span class="skill-pill bg-blue-500 text-white px-4 py-2 rounded-full">Keil</span>
+                <span class="skill-pill bg-red-500 text-white px-4 py-2 rounded-full">STVD</span>
+                <span class="skill-pill bg-green-600 text-white px-4 py-2 rounded-full">QtDesigner</span>
+                <span class="skill-pill bg-blue-500 text-white px-4 py-2 rounded-full">QTCreator</span>
+                <span class="skill-pill bg-gray-700 text-white px-4 py-2 rounded-full">FreeCAD</span>
+                <span class="skill-pill bg-gray-900 text-white px-4 py-2 rounded-full">Inkscape</span>
+                <span class="skill-pill bg-purple-600 text-white px-4 py-2 rounded-full">Blender</span>
+                <span class="skill-pill bg-blue-500 text-white px-4 py-2 rounded-full">Postman</span>
+                <span class="skill-pill bg-black text-white px-4 py-2 rounded-full">MySQL Workbanch</span>
+                <span class="skill-pill bg-pink-500 text-white px-4 py-2 rounded-full">PyCharm</span>
+				<span class="skill-pill bg-purple-600 text-white px-4 py-2 rounded-full">VS Code</span> 
+				<span class="skill-pill bg-blue-500 text-white px-4 py-2 rounded-full">Git</span>
+            </div>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">Microprocessors</h3>
+            <div class="flex flex-wrap gap-3 mb-8">
+                <span class="skill-pill bg-cyan-400 text-black px-4 py-2 rounded-full">STM8</span>
+                <span class="skill-pill bg-gray-900 text-white px-4 py-2 rounded-full">STM32</span>
+				<span class="skill-pill bg-purple-600 text-white px-4 py-2 rounded-full">ESP32</span>
+            </div>
+			
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">Languages</h3>
+            <div class="flex flex-wrap gap-3 mb-8">
+                <span class="skill-pill bg-orange-500 text-white px-4 py-2 rounded-full">С</span>
+                <span class="skill-pill bg-blue-600 text-white px-4 py-2 rounded-full">C++</span>
+                <span class="skill-pill bg-blue-700 text-white px-4 py-2 rounded-full">C#</span>
+                <span class="skill-pill bg-green-600 text-white px-4 py-2 rounded-full">Python</span>
+                <span class="skill-pill bg-purple-600 text-white px-4 py-2 rounded-full">PyQT</span>				
+                <span class="skill-pill bg-yellow-400 text-black px-4 py-2 rounded-full">Java</span>
+                <span class="skill-pill bg-red-600 text-white px-4 py-2 rounded-full">Bash</span>
+            </div>
+			
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">Data &amp; Backend</h3>
+            <div class="flex flex-wrap gap-3 mb-8">
+                <span class="skill-pill bg-blue-900 text-white px-4 py-2 rounded-full">MariaDB</span>
+                <span class="skill-pill bg-yellow-400 text-black px-4 py-2 rounded-full">SQLite</span> 
+            </div>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">Workflow</h3>
+            <div class="flex flex-wrap gap-3">
+                <span class="skill-pill bg-blue-600 text-white px-4 py-2 rounded-full">Jira</span>
+                <span class="skill-pill bg-green-600 text-white px-4 py-2 rounded-full">Bitbaket</span>
+                <span class="skill-pill bg-blue-700 text-white px-4 py-2 rounded-full">Confluence</span>   
+                <span class="skill-pill bg-gray-900 text-white px-4 py-2 rounded-full">GitHub</span>   
+				<span class="skill-pill bg-purple-600 text-white px-4 py-2 rounded-full">GitLab</span> 				
+                <span class="skill-pill bg-pink-600 text-white px-4 py-2 rounded-full">Figma</span>
+                <span class="skill-pill bg-blue-700 text-white px-4 py-2 rounded-full">Draw.io</span>
+                <span class="skill-pill bg-black text-white px-4 py-2 rounded-full">BPMN notation</span>
+
+            </div>
+        </section>
+
+        <!-- YouTube CTA -->
+        <section class="bg-white rounded-2xl shadow-sm p-8 mb-12 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+                <h2 class="text-xl font-bold text-gray-800 mb-1">Want to see how these boards were designed?</h2>
+                <p class="text-gray-500 text-sm">Explore real PCB projects, design decisions, layouts, prototypes, and testing — from the first schematic to the finished board.</p>
+            </div>
+            <a href="video.html" class="flex-shrink-0 inline-flex items-center bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200" style="font-family:'Poppins',sans-serif;">
+                <i data-feather="youtube" class="mr-2"></i> Open video with projects
+            </a>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-200 py-6 px-4 mt-4">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-gray-400">
+            <p>&copy; 2026 Dmytro Popadiuk. All rights reserved.</p>
+            <nav class="flex gap-4">
+                <a href="index.html" class="hover:text-gray-600 transition">Home</a>
+                <a href="video.html" class="hover:text-gray-600 transition">Video</a>
+                <a href="index.html#contact" target="_self" class="hover:text-gray-600 transition">Contact</a>
+            </nav>
+        </div>
+    </footer>
+    </div><!-- /.main-content -->
+
+    <script>
+        feather.replace();
+
+        // ── Mobile sidebar ──
+        (function () {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            const burgerBtn = document.getElementById('burger-btn');
+            function open()  { sidebar.classList.add('open'); overlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
+            function close() { sidebar.classList.remove('open'); overlay.classList.remove('open'); document.body.style.overflow = ''; }
+            burgerBtn?.addEventListener('click', open);
+            overlay?.addEventListener('click', close);
+        })();
+
+        // ── Slide Carousel ──
+        class AppCarousel {
+            constructor(container) {
+                this.track   = container.querySelector('.screens-track-slide');
+                this.vp      = container.querySelector('.screens-viewport');
+                this.slides  = Array.from(this.track.querySelectorAll('img'));
+                this.total   = this.slides.length;
+                this.cur     = 0;
+                this.prev    = container.querySelector('.carousel-prev-new');
+                this.next    = container.querySelector('.carousel-next-new');
+                this.counter = container.querySelector('.carousel-counter-text');
+                this.fill    = container.querySelector('.carousel-progress-fill');
+
+                this.prev?.addEventListener('click', () => this.go(this.cur - 1));
+                this.next?.addEventListener('click', () => this.go(this.cur + 1));
+
+                let startX = 0;
+                this.vp.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+                this.vp.addEventListener('touchend', e => {
+                    const dx = e.changedTouches[0].clientX - startX;
+                    if (Math.abs(dx) > 40) this.go(this.cur + (dx < 0 ? 1 : -1));
+                }, { passive: true });
+
+                this.vp.addEventListener('keydown', e => {
+                    if (e.key === 'ArrowLeft')  this.go(this.cur - 1);
+                    if (e.key === 'ArrowRight') this.go(this.cur + 1);
+                });
+
+                this.update();
+            }
+            go(i) { this.cur = Math.max(0, Math.min(i, this.total - 1)); this.update(); }
+            update() {
+                this.track.style.transform = `translateX(${-this.cur * 100}%)`;
+                if (this.counter) this.counter.textContent = `${this.cur + 1} / ${this.total}`;
+                if (this.fill)    this.fill.style.width    = `${((this.cur + 1) / this.total) * 100}%`;
+                if (this.prev)    this.prev.disabled = this.cur === 0;
+                if (this.next)    this.next.disabled = this.cur === this.total - 1;
+            }
+        }
+        document.querySelectorAll('.screens-carousel').forEach(c => new AppCarousel(c));
+
+        // ── Filter ──
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const f = btn.dataset.filter;
+                document.querySelectorAll('.app-card').forEach(card => {
+                    card.classList.toggle('filtered-out', f !== 'all' && card.dataset.category !== f);
+                });
+            });
+        });
+
+        // ── Card Tilt ──
+        document.querySelectorAll('.app-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transition = 'transform 0.12s ease, box-shadow 0.3s ease';
+            });
+            card.addEventListener('mousemove', e => {
+                const r = card.getBoundingClientRect();
+                const x = (e.clientX - r.left) / r.width  - 0.5;
+                const y = (e.clientY - r.top)  / r.height - 0.5;
+                card.style.transform  = `perspective(1200px) rotateY(${x * 2}deg) rotateX(${-y * 1.5}deg) translateY(-3px)`;
+                card.style.boxShadow  = '0 24px 48px -12px rgba(240,81,56,0.15)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transition = 'transform 0.6s ease, box-shadow 0.4s ease';
+                card.style.transform  = '';
+                card.style.boxShadow  = '';
+            });
+        });
+
+        // ── Scroll Reveal ──
+        const revealObs = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => entry.target.classList.add('visible'), i * 60);
+                    revealObs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.06 });
+        document.querySelectorAll('.reveal-card').forEach(el => revealObs.observe(el));
+    </script>
+</body>
+</html>

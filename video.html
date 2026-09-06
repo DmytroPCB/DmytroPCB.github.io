@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCB & Circuit Designer | Video — Dmytro Popadiuk</title>
+    <meta name="description" content="PCB & Circuit Designer — development of electrical circuits, development of printed circuit boards, KiCAD, LT-SPICE, Eagle.">
+    <link rel="canonical" href="https://DmytroPCB.github.io/video.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="PCB & Circuit Designer | Video — Dmytro Popadiuk">
+    <meta property="og:description" content="PCB design, circuit development, simulation, and hardware engineering — using KiCad, EAGLE, and LTspice. Explore real-world PCB projects from schematic and simulation to layout, prototyping, and production-ready boards.">
+    <meta property="og:url" content="https://DmytroPCB.github.io/video.html">
+    <meta property="og:image" content="screens/avatar.webp">
+    <meta property="og:image:alt" content="Dmytro Popadiuk — PCB and Circuit Designer">
+    <meta property="og:image:width" content="460">
+    <meta property="og:image:height" content="460">
+    <meta property="og:site_name" content="Dmytro Popadiuk">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="PCB & Circuit design | Video">
+    <meta name="twitter:description" content="KiCad, EAGLE, LTspice, and more — every project includes real PCB designs, schematics, simulations, and supporting documentation.">
+    <meta name="twitter:image" content="screens/avatar.webp">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Dmytro Popadiuk",
+      "url": "https://DmytroPCB.github.io",
+      "jobTitle": "PCB Designer",
+      "sameAs": [
+        "https://github.com/DmytroPCB"
+      ]
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&family=DM+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="portfolio.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <style>
+        body { font-family: 'DM Sans', sans-serif; }
+        h1, h2, h3 { font-family: 'Poppins', sans-serif; }
+
+        /* ── Section animations ── */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(22px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .animate-section { opacity: 0; }
+        .animate-section.visible { animation: fadeInUp 0.45s ease-out forwards; }
+
+        /* ── Video card ── */
+        .video-card { transition: all 0.25s ease; }
+        .video-card:hover { transform: translateY(-4px); box-shadow: 0 16px 32px -8px rgba(0,0,0,0.12); }
+
+        /* ── Topic tile ── */
+        .topic-tile { transition: all 0.2s ease; }
+        .topic-tile:hover { transform: translateY(-3px); box-shadow: 0 8px 20px -4px rgba(240,81,56,0.12); background-color: #fff0ed; }
+
+        /* ── Subscribe button ── */
+        .btn-subscribe:active { transform: scale(0.96); }
+
+        /* ── Section heading ── */
+        .section-heading {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #1D1D1F;
+            display: flex;
+            align-items: center;
+            gap: 0.625rem;
+        }
+
+        /* ── Mobile ── */
+        @media (max-width: 768px) {
+            main { padding-top: 5rem !important; }
+        }
+    </style>
+</head>
+<body class="bg-[#F5F5F7] antialiased">
+
+    <!-- Mobile burger -->
+    <button id="burger-btn" class="burger-btn" aria-label="Open menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+    </button>
+    <div id="sidebar-overlay" class="sidebar-overlay" role="presentation"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar" role="navigation" aria-label="Site navigation">
+        <div class="sidebar-inner">
+            <div class="sidebar-brand">
+                <a href="index.html" class="sidebar-name">Dmytro Popadiuk</a>
+                <p class="sidebar-tagline">PCB Designer</p>
+            </div>
+            <hr class="sidebar-divider">
+            <nav class="sidebar-nav">
+                <a href="index.html"       class="sidebar-nav-link">Home</a>
+                <a href="PCBs.html"        class="sidebar-nav-link">PCBs</a>
+                <a href="video.html"     class="sidebar-nav-link active">Video</a>
+                <a href="index.html#contact" class="sidebar-nav-link">Contact</a>
+            </nav>
+            <div class="sidebar-footer">
+				<a href="https://www.upwork.com/freelancers/~01f2a1a67598894509?mp_source=share" target="_blank" rel="noopener" class="sidebar-social" aria-label="Upwork">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18.2 7.1c-1.8 0-3.3 1.1-4.2 2.7-.5-.9-.9-2-1.2-3.1h-3v5.1c0 1.4-.6 2.3-1.7 2.3-1 0-1.6-.9-1.6-2.3V6.7h-3v5.1c0 3.1 1.8 5.2 4.6 5.2 1.5 0 2.7-.7 3.5-1.9.5.9 1 1.8 1.6 2.7h3.4c-.9-1.2-1.7-2.5-2.3-3.7.8-1.3 1.8-2 3-2 1.1 0 2 .8 2 2s-.9 2-2.1 2c-.5 0-.9-.1-1.3-.3l-.8 2.8c.7.3 1.5.5 2.3.5 2.8 0 4.9-2.1 4.9-5s-2.1-5-4.1-5z"/></svg>
+                </a>
+                <a href="https://www.fiverr.com/s/ye2RyzG" target="_blank" rel="noopener" class="sidebar-social" aria-label="YouTube">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4C11.46 4 9 6.46 9 9.5V10H6v3h3v6H6v3h9v-3h-3v-6h4v-3h-4v-.5c0-1.1.9-2 2-2h2V4h-1.5z"/>
+							<circle cx="17.5" cy="7" r="1.5"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon></svg>
+                </a>
+                <a href="https://freelancehunt.com/freelancer/Dmytro_Popadiuk.html" target="_blank" rel="noopener" class="sidebar-social" aria-label="toolbit.dev">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10
+								 10-4.48 10-10S17.52 2 12 2zm0 3
+								 c3.87 0 7 3.13 7 7 0 1.55-.5 2.98-1.35 4.14
+								 l-3.07-3.07c.27-.46.42-.99.42-1.57
+								 0-1.66-1.34-3-3-3-.58 0-1.11.16-1.57.42L7.36 5.85
+								 A6.96 6.96 0 0 1 12 5zm-7 7c0-1.55.5-2.98 1.35-4.14
+								 l3.07 3.07c-.27.46-.42.99-.42 1.57
+								 0 1.66 1.34 3 3 3 .58 0 1.11-.16 1.57-.42l3.07 3.07
+								 A6.96 6.96 0 0 1 12 19c-3.87 0-7-3.13-7-7z"/>
+				    </svg>
+                </a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main content -->
+    <div class="main-content">
+    <main class="container mx-auto px-4 py-12">
+
+        <!-- Channel Hero -->
+        <section class="bg-white rounded-2xl shadow-sm p-8 mb-10 animate-section">
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="flex-shrink-0">
+                    <div class="w-28 h-28 rounded-full overflow-hidden border-4 shadow-lg" style="border-color:#F0513840;">
+                        <img src="screens/avatar.webp" alt="Dmytro Popadiuk" class="w-full h-full object-cover" />
+                    </div>
+                </div>
+                <div class="text-center md:text-left flex-grow">
+                    <h1 class="text-4xl font-bold text-gray-900 mb-2">Videos of my projects</h1>
+                    <p class="text-gray-600 text-lg mb-4">PCB design and hardware engineering from a designer who builds real, production-ready boards. I share the practical challenges behind my projects — from schematic design and component selection to PCB layout, prototyping, testing, and manufacturing.</p>
+
+                    <ul class="text-sm text-gray-600 space-y-1 mb-6 text-left">
+                        <li class="flex items-center gap-2"><i data-feather="check" class="w-4 h-4 flex-shrink-0" style="color:#F05138;"></i> PCB designs built around real-world engineering requirements</li>
+                        <li class="flex items-center gap-2"><i data-feather="check" class="w-4 h-4 flex-shrink-0" style="color:#F05138;"></i> Project documentation with schematics, layouts, and manufacturing files</li>
+                        <li class="flex items-center gap-2"><i data-feather="check" class="w-4 h-4 flex-shrink-0" style="color:#F05138;"></i> Covers the practical details that datasheets and application notes often leave out — signal integrity, power distribution, grounding, thermal design, EMI/EMC, and DFM</li>
+                    </ul>
+
+                    <div class="flex flex-wrap gap-6 justify-center md:justify-start text-gray-700 mb-6">
+                        <div class="text-center">
+                            <p class="text-2xl font-bold" style="color:#F05138;">100+</p>
+                            <p class="text-sm text-gray-500">PCB Projects</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-2xl font-bold" style="color:#F05138;">10+</p>
+                            <p class="text-sm text-gray-500">Years Designing</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-2xl font-bold" style="color:#F05138;">Weekly</p>
+                            <p class="text-sm text-gray-500">New Projects</p>
+                        </div>
+                    </div>
+
+                    <a href="#Sound-card_PCB_Yellow" target="_self" rel="noopener noreferrer"
+                       class="btn-subscribe inline-flex items-center bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200">
+                        <i data-feather="youtube" class="mr-2"></i> Subscribe Video
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <h2 class="section-heading mb-8">
+            <i data-feather="play-circle" style="color:#F05138;"></i> Recent Videos
+        </h2>
+		<!-- Sound card video -->
+        <section class="bg-white rounded-2xl shadow-sm p-8 mb-10 animate-section">
+            <div class="flex flex-col md:flex-row items-center gap-8">					
+                <div class="text-center md:text-left flex-grow">
+					 <!-- Video -->
+					<div class="video-container">
+						<video controls preload="metadata" id="Sound-card_PCB_Yellow">
+							<source src="videos/Sound-card_PCB_Yellow.mp4" type="video/mp4">
+							Your browser does not support HTML5 video.
+						</video>
+					</div>
+					 <ul class="text-sm text-gray-600 space-y-1 mb-6 text-left"> </ul>
+                    <h5 class="text-2xl font-bold text-gray-900 mb-2">Sound Card PCB</h5>
+                    <p class="text-gray-600 text-lg mb-4">PCB design and development of a sound card, including schematic
+						design, component placement, PCB layout, routing, and prototype testing.</p>
+
+					<!-- Link to local description -->
+					<a href="PCBs.html#Sound_card_text"
+					   class="inline-flex items-center gap-1.5 text-xs text-gray-600 hover:text-gray-900 border border-gray-200 hover:border-gray-400 rounded-lg px-3 py-1.5 transition">
+						<i data-feather="file-text" class="w-3.5 h-3.5"></i>
+						View project details
+					</a>
+                </div>
+            </div>
+        </section>
+		
+		<!-- Miniature DC/DC video -->
+        <section class="bg-white rounded-2xl shadow-sm p-8 mb-10 animate-section">
+            <div class="flex flex-col md:flex-row items-center gap-8">					
+                <div class="text-center md:text-left flex-grow">
+					 <!-- Video -->
+					<div class="video-container" id="advanced-miniature-pcb-power-supply-design-flexible-output-voltage-control-adc-dac-stm8-embedded-microcontroller-precise-feedback-3digit-7segment-display">
+						<video controls preload="metadata" >
+							<source src="videos/advanced-miniature-pcb-power-supply-design-flexible-output-voltage-control-adc-dac-stm8-embedded-microcontroller-precise-feedback-3digit-7segment-display.mp4" type="video/mp4">
+							Your browser does not support HTML5 video.
+						</video>
+					</div>
+					 <ul class="text-sm text-gray-600 space-y-1 mb-6 text-left"> </ul>
+                    <h5 class="text-2xl font-bold text-gray-900 mb-2">Miniature DC/DC</h5>
+                    <p class="text-gray-600 text-lg mb-4">Small DC-DC converter with a button to switch the output voltage and a screen to display the voltage.</p>
+
+					<!-- Link to local description -->
+					<a href="PCBs.html#Miniature_DC-DC_text"
+					   class="inline-flex items-center gap-1.5 text-xs text-gray-600 hover:text-gray-900 border border-gray-200 hover:border-gray-400 rounded-lg px-3 py-1.5 transition">
+						<i data-feather="file-text" class="w-3.5 h-3.5"></i>
+						View project details
+					</a>
+                </div>
+            </div>
+        </section>		
+		
+		<!-- Panelization of USB-C video -->
+        <section class="bg-white rounded-2xl shadow-sm p-8 mb-10 animate-section">
+            <div class="flex flex-col md:flex-row items-center gap-8">					
+                <div class="text-center md:text-left flex-grow">
+					 <!-- Video -->
+					<div class="video-container" id="Show_V-cut_PCB">
+						<video controls preload="metadata" >
+							<source src="videos/Show_V-cut_PCB.mp4" type="video/mp4">
+							Your browser does not support HTML5 video.
+						</video>
+					</div>
+					 <ul class="text-sm text-gray-600 space-y-1 mb-6 text-left"> </ul>
+                    <h5 class="text-2xl font-bold text-gray-900 mb-2">Miniature DC/DC</h5>
+                    <p class="text-gray-600 text-lg mb-4">Small DC-DC converter with a button to switch the output voltage and a screen to display the voltage.</p>
+
+					<!-- Link to local description -->
+					<a href="PCBs.html#Panelization_of_USB-C_Text"
+					   class="inline-flex items-center gap-1.5 text-xs text-gray-600 hover:text-gray-900 border border-gray-200 hover:border-gray-400 rounded-lg px-3 py-1.5 transition">
+						<i data-feather="file-text" class="w-3.5 h-3.5"></i>
+						View project details
+					</a>
+                </div>
+            </div>
+        </section>		
+
+		<!-- ESP32-LED-Controled_PCB video -->
+        <section class="bg-white rounded-2xl shadow-sm p-8 mb-10 animate-section">
+            <div class="flex flex-col md:flex-row items-center gap-8">					
+                <div class="text-center md:text-left flex-grow">
+					 <!-- Video -->
+					<div class="video-container" id="ESP32-LED-Controled_PCB">
+						<video controls preload="metadata" >
+							<source src="videos/ESP32-LED-Controled_PCB.mp4" type="video/mp4">
+							Your browser does not support HTML5 video.
+						</video>
+					</div>
+					 <ul class="text-sm text-gray-600 space-y-1 mb-6 text-left"> </ul>
+                    <h5 class="text-2xl font-bold text-gray-900 mb-2">ESP32-LED Controler</h5>
+                    <p class="text-gray-600 text-lg mb-4">LED strip controller with galvanic isolation of the brightness adjustment resistor and the output control signal. Remote control via ESP32.</p>
+
+					<!-- Link to local description -->
+					<a href="PCBs.html#ESP32-LED-Controled_PCB_Text"
+					   class="inline-flex items-center gap-1.5 text-xs text-gray-600 hover:text-gray-900 border border-gray-200 hover:border-gray-400 rounded-lg px-3 py-1.5 transition">
+						<i data-feather="file-text" class="w-3.5 h-3.5"></i>
+						View project details
+					</a>
+                </div>
+            </div>
+        </section>		
+
+		<!-- Motor Controler video -->
+        <section class="bg-white rounded-2xl shadow-sm p-8 mb-10 animate-section">
+            <div class="flex flex-col md:flex-row items-center gap-8">					
+                <div class="text-center md:text-left flex-grow">
+					 <!-- Video -->
+					<div class="video-container" id="Motor_caunter_video">
+						<video controls preload="metadata" >
+							<source src="videos/Motor_caunter_video_Blender-Render_calm_music_0001-0250.mp4" type="video/mp4">
+							Your browser does not support HTML5 video.
+						</video>
+					</div>
+					 <ul class="text-sm text-gray-600 space-y-1 mb-6 text-left"> </ul>
+                    <h5 class="text-2xl font-bold text-gray-900 mb-2">Motor Controler</h5>
+                    <p class="text-gray-600 text-lg mb-4">The task was to create a motor controller for a conveyor. The controller can change the speed of the motor shaft and count the total number of revolutions the motor has made.</p>
+
+					<!-- Link to local description -->
+					<a href="PCBs.html#Motor_Controler_Text"
+					   class="inline-flex items-center gap-1.5 text-xs text-gray-600 hover:text-gray-900 border border-gray-200 hover:border-gray-400 rounded-lg px-3 py-1.5 transition">
+						<i data-feather="file-text" class="w-3.5 h-3.5"></i>
+						View project details
+					</a>
+                </div>
+            </div>
+        </section>			
+
+
+		<!-- Relay board video -->
+        <section class="bg-white rounded-2xl shadow-sm p-8 mb-10 animate-section">
+            <div class="flex flex-col md:flex-row items-center gap-8">					
+                <div class="text-center md:text-left flex-grow">
+					 <!-- Video -->
+					<div class="video-container" id="Ardruino-relay-BRD_Video">
+						<video controls preload="metadata" >
+							<source src="videos/Ardruino-relay-BRD.mp4" type="video/mp4">
+							Your browser does not support HTML5 video.
+						</video>
+					</div>
+					 <ul class="text-sm text-gray-600 space-y-1 mb-6 text-left"> </ul>
+                    <h5 class="text-2xl font-bold text-gray-900 mb-2">Relay board</h5>
+                    <p class="text-gray-600 text-lg mb-4">Washing machine control board. Galvanic isolation is used for all inputs and outputs.</p>
+
+					<!-- Link to local description -->
+					<a href="PCBs.html#Relay_board_Text"
+					   class="inline-flex items-center gap-1.5 text-xs text-gray-600 hover:text-gray-900 border border-gray-200 hover:border-gray-400 rounded-lg px-3 py-1.5 transition">
+						<i data-feather="file-text" class="w-3.5 h-3.5"></i>
+						View project details
+					</a>
+                </div>
+            </div>
+        </section>	
+
+        <!-- Recent Videos -->
+        <section id="videos" class="mb-10 animate-section" style="animation-delay:0.1s">          
+
+                
+
+
+                <!-- Right column -->
+                <div class="flex flex-col gap-6">
+
+                    
+
+                </div>
+           
+
+            <div class="text-right mt-6">
+                <a href="video.html" target="_self" rel="noopener noreferrer"
+                   class="inline-flex items-center text-red-600 hover:text-red-800 font-medium transition gap-1">
+                    View from the beginning <i data-feather="arrow-right" class="w-4 h-4 ml-1"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- What You'll Learn -->
+        <section id="topics" class="bg-white rounded-2xl shadow-sm p-8 mb-10 animate-section" style="animation-delay:0.15s">
+            <h2 class="section-heading mb-2">
+                <i data-feather="book-open" style="color:#F05138;"></i> What You'll See
+            </h2>
+            <p class="text-gray-600 mb-8">Real PCB design challenges and engineering decisions — explained clearly, from the initial schematic to the finished board.</p>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+                <div class="topic-tile bg-gray-50 rounded-xl p-4">
+                    <h3 class="font-semibold text-gray-800 mb-2 flex items-center gap-2">
+                        <i data-feather="smartphone" class="w-4 h-4" style="color:#F05138;"></i> Schematic &amp; Circuit Design
+                    </h3>
+                    <p class="text-gray-600 text-sm">Circuit architecture, component selection, power supplies, analog and digital circuits, interfaces, and designing reliable schematics.</p>
+                </div>
+
+                <div class="topic-tile bg-gray-50 rounded-xl p-4">
+                    <h3 class="font-semibold text-gray-800 mb-2 flex items-center gap-2">
+                        <i data-feather="cloud" class="w-4 h-4" style="color:#F05138;"></i> PCB Layout
+                    </h3>
+                    <p class="text-gray-600 text-sm">Multilayer board design, component placement, routing, ground planes, power distribution, design rules, and layout optimization.</p>
+                </div>
+
+                <div class="topic-tile bg-gray-50 rounded-xl p-4">
+                    <h3 class="font-semibold text-gray-800 mb-2 flex items-center gap-2">
+                        <i data-feather="zap" class="w-4 h-4" style="color:#F05138;"></i> Signal &amp; Power Integrity
+                    </h3>
+                    <p class="text-gray-600 text-sm">High-speed signals, impedance-controlled traces, differential pairs, decoupling, return paths, noise reduction, and stable power delivery.</p>
+                </div>
+
+                <div class="topic-tile bg-gray-50 rounded-xl p-4">
+                    <h3 class="font-semibold text-gray-800 mb-2 flex items-center gap-2">
+                        <i data-feather="cpu" class="w-4 h-4" style="color:#F05138;"></i> Manufacturing &amp; DFM
+                    </h3>
+                    <p class="text-gray-600 text-sm">PCB stackups, footprints, BOMs, Gerber and drill files, design for manufacturing, assembly requirements, and preparing boards for production.</p>
+                </div>
+
+                <div class="topic-tile bg-gray-50 rounded-xl p-4">
+                    <h3 class="font-semibold text-gray-800 mb-2 flex items-center gap-2">
+                        <i data-feather="dollar-sign" class="w-4 h-4" style="color:#F05138;"></i> Prototyping &amp; Testing
+                    </h3>
+                    <p class="text-gray-600 text-sm">Bringing boards to life — prototype assembly, bring-up, debugging, measurements, test equipment, and solving hardware problems.</p>
+                </div>
+
+                <div class="topic-tile bg-gray-50 rounded-xl p-4">
+                    <h3 class="font-semibold text-gray-800 mb-2 flex items-center gap-2">
+                        <i data-feather="activity" class="w-4 h-4" style="color:#F05138;"></i> Real-World Hardware
+                    </h3>
+                    <p class="text-gray-600 text-sm">Practical designs involving MCUs, sensors, communication interfaces, power electronics, connectors, and complete embedded hardware systems.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Apps CTA -->
+        <section class="bg-white rounded-2xl shadow-sm p-8 mb-8 flex flex-col md:flex-row items-center justify-between gap-6 animate-section" style="animation-delay:0.18s">
+            <div>
+                <h2 class="text-xl font-bold text-gray-800 mb-1">Curious what I've actually designed?</h2>
+                <p class="text-gray-500 text-sm">Explore real PCB and hardware projects — from first schematic and PCB layout to prototypes, testing, and production-ready designs.</p>
+            </div>
+            <a href="PCBs.html" class="flex-shrink-0 inline-flex items-center font-semibold py-3 px-6 rounded-lg transition duration-200" style="background:#F05138;color:white;font-family:'Poppins',sans-serif;">
+                <i data-feather="grid" class="mr-2"></i> Browse My PCBs
+            </a>
+        </section>
+
+        <!-- GitHub CTA -->
+        <section id="repos" class="rounded-2xl p-8 text-white text-center animate-section mb-4" style="background:#1D1D1F;animation-delay:0.2s">
+            <h2 class="text-2xl font-bold mb-3">Let's Work Together</h2>
+            <p class="mb-6 max-w-xl mx-auto" style="color:#9ca3af;">Have a PCB or hardware project in mind?
+				<br>Whether you need help with schematic design, PCB layout, hardware development, prototyping, or preparing a board for manufacturing,<br>I'd be happy to discuss your project.</br></br></p>
+            <a href="index.html#contact" target="_self" rel="noopener noreferrer"
+               class="inline-flex items-center bg-white hover:bg-gray-100 font-semibold py-3 px-6 rounded-lg transition duration-300" style="color:#1D1D1F;font-family:'Poppins',sans-serif;">
+                 Contact Me 
+            </a>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-200 py-6 px-4 mt-4">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-gray-400">
+            <p>&copy; 2026 Dmytro Popadiuk. All rights reserved.</p>
+            <nav class="flex gap-4">
+                <a href="index.html" target="_self" class="hover:text-gray-600 transition">Home</a>
+                <a href="PCBs.html" target="_self" class="hover:text-gray-600 transition">PCBs</a>
+                <a href="video.html" target="_self" class="hover:text-gray-600 transition">Video</a>
+            </nav>
+        </div>
+    </footer>
+    </div><!-- /.main-content -->
+
+    <script>
+        feather.replace();
+
+        // ── Mobile sidebar ──
+        (function () {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            const burgerBtn = document.getElementById('burger-btn');
+            function open()  { sidebar.classList.add('open'); overlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
+            function close() { sidebar.classList.remove('open'); overlay.classList.remove('open'); document.body.style.overflow = ''; }
+            burgerBtn?.addEventListener('click', open);
+            overlay?.addEventListener('click', close);
+        })();
+
+        // ── Section entry animations ──
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.08 });
+        document.querySelectorAll('.animate-section').forEach(el => observer.observe(el));
+
+        // ── Fetch video titles via oEmbed ──
+        document.querySelectorAll('#video-grid [data-video-id]').forEach(card => {
+            const id = card.dataset.videoId;
+            const titleEl = card.querySelector('.video-title');
+            fetch(`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${id}&format=json`)
+                .then(r => r.json())
+                .then(data => {
+                    titleEl.textContent = data.title;
+                    titleEl.classList.remove('animate-pulse', 'bg-gray-100', 'rounded', 'h-4', 'h-5', 'w-3/4');
+                })
+                .catch(() => {
+                    titleEl.textContent = 'iOS Tutorial — NDCSwift';
+                    titleEl.classList.remove('animate-pulse', 'bg-gray-100', 'rounded', 'h-4', 'h-5', 'w-3/4');
+                });
+        });
+    </script>
+</body>
+</html>
