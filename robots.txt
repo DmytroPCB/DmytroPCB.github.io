@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://DmytroPCB.github.io/sitemap.xml
-
+Sitemap: https://dmytropcb.github.io/sitemap.xml
