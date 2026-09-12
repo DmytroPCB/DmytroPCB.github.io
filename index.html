@@ -23,6 +23,34 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Dmytro Popadiuk — PCB Designer">
     <meta name="twitter:description" content="Real PCB projects. KiCAD, EAGLE, LTspice. Hardware designs from a PCB engineer who takes projects from schematic to prototype and production.">
+    
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Dmytro Popadiuk | PCB Designer",
+    "url": "https://dmytropcb.github.io/",
+    "hasPart": [
+        {
+        "@type": "WebPage",
+        "name": "About Me",
+        "url": "https://github.io"
+        },
+        {
+        "@type": "What I've Shipped",
+        "name": "Projects",
+        "url": "https://github.io"
+        },
+        {
+        "@type": "WebPage",
+        "name": "Get in Touch",
+        "url": "https://github.io"
+        }
+    ]
+    }
+    </script>
+    
+    
     <link rel="canonical" href="https://DmytroPCB.github.io">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -100,9 +128,9 @@
             gap: 0.625rem;
         }
 
-        /* ── Featured app cards ── */
-        .featured-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .featured-card:hover {
+        /* ── projects pcbs cards ── */
+        .projects-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .projects-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 20px 40px -8px rgba(240,81,56,0.13);
         }
@@ -164,7 +192,7 @@
             <hr class="sidebar-divider">
             <nav class="sidebar-nav">
                 <a href="#about"   class="sidebar-nav-link" data-section="about">About</a>
-                <a href="PCBs.html" class="sidebar-nav-link" data-page="apps">PCBs</a>
+                <a href="PCBs.html" class="sidebar-nav-link" data-page="pcbs">PCBs</a>
                 <a href="video.html" class="sidebar-nav-link" data-page="youtube">Video</a>
                 <a href="#contact" class="sidebar-nav-link" data-section="contact">Contact</a>
             </nav>
@@ -210,7 +238,7 @@
                     </div>
                 </div>
                 <div class="hero-visual">
-                    <img src="screens/Sound_card_1.png" alt="Sound_card_ — ADHD focus and time-blocking app" class="hero-mockup float-anim">
+                    <img src="screens/Sound_card_1.png" alt="Sound_card_ Development of a 4-layer sound card prototype in KiCad" class="hero-mockup float-anim">
                 </div>
             </div>
         </section>
@@ -319,8 +347,8 @@
             </div>
         </section>
 
-        <!-- Featured Apps -->
-        <section id="featured" class="mx-6 mb-6">
+        <!-- Completed Projects -->
+        <section id="projects" class="mx-6 mb-6">
             <div class="flex items-center justify-between mb-5">
                 <h2 class="section-heading">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F05138" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
@@ -334,9 +362,9 @@
             <div class="grid md:grid-cols-3 gap-5">
 
                 <!-- Sound card -->
-                <div class="featured-card reveal bg-white rounded-2xl shadow-sm overflow-hidden flex flex-col">
+                <div class="projects-card reveal bg-white rounded-2xl shadow-sm overflow-hidden flex flex-col">
                     <div class="flex items-center justify-center p-5 bg-gray-50" style="height:260px;">
-                        <img src="screens/Sound_card_1.png" alt="Sound_card_ app" class="h-full max-w-full object-contain drop-shadow-lg">
+                        <img src="screens/Sound_card_1.png" alt="Sound_card_ Development of a 4-layer sound card prototype in KiCad" class="h-full max-w-full object-contain drop-shadow-lg">
                     </div>
                     <div class="p-5 flex flex-col flex-grow">
                         <div class="flex items-center justify-between mb-2">
@@ -350,8 +378,8 @@
                             <span class="bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full text-xs">Prototype</span>
                         </div>
                         <div class="flex items-center gap-4 flex-wrap">
-                            <a href="video.html#Sound-card_PCB_Yellow" target="_self" class="app-store-link">
-                                <img src="icons/video-icon.svg" alt="Download on the App Store" class="app-store-badge-img">
+                            <a href="video.html#Sound-card_PCB_Yellow" target="_self" class="pcb-store-link">
+                                <img src="icons/video-icon.svg" alt="Watch the video Sound-card_PCB_Yellow" class="pcb-badge-img">
                             </a>
                             <a href="PCBs.html#Sound_card_text" class="text-sm font-semibold text-gray-700 hover:text-gray-900 inline-flex items-center gap-1">Learn more <span aria-hidden="true">&rarr;</span></a>
                         </div>
@@ -359,9 +387,9 @@
                 </div>
 
                 <!-- Miniature Regulated DC/DC -->
-                <div class="featured-card reveal bg-white rounded-2xl shadow-sm overflow-hidden flex flex-col">
+                <div class="projects-card reveal bg-white rounded-2xl shadow-sm overflow-hidden flex flex-col">
                     <div class="flex items-center justify-center p-5 bg-gray-50" style="height:260px;">
-                        <img src="screens/Miniature_DC-DC_1.png" alt="Gratitude Bestie app" class="h-full max-w-full object-contain drop-shadow-lg">
+                        <img src="screens/Miniature_DC-DC_1.png" alt="Image of a miniature DC-DC converter with a button and a display." class="h-full max-w-full object-contain drop-shadow-lg">
                     </div>
                     <div class="p-5 flex flex-col flex-grow">
                         <div class="flex items-center justify-between mb-2">
@@ -375,8 +403,8 @@
                             <span class="bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full text-xs">JLCPCB</span>
                         </div>
                         <div class="flex items-center gap-4 flex-wrap">
-                            <a href="video.html#advanced-miniature-pcb-power-supply-design-flexible-output-voltage-control-adc-dac-stm8-embedded-microcontroller-precise-feedback-3digit-7segment-display" target="_self" class="app-store-link">
-                                <img src="icons/video-icon.svg" alt="Download on the App Store" class="app-store-badge-img">
+                            <a href="video.html#advanced-miniature-pcb-power-supply-design-flexible-output-voltage-control-adc-dac-stm8-embedded-microcontroller-precise-feedback-3digit-7segment-display" target="_self" class="pcb-store-link">
+                                <img src="icons/video-icon.svg" alt="Watch the video Miniature_DC-DC" class="pcb-badge-img">
                             </a>
                             <a href="PCBs.html#Miniature_DC-DC_text" class="text-sm font-semibold text-gray-700 hover:text-gray-900 inline-flex items-center gap-1">Learn more <span aria-hidden="true">&rarr;</span></a>
                         </div>
@@ -384,9 +412,9 @@
                 </div>
 
                 <!-- Panelization of USB-C -->
-                <div class="featured-card reveal bg-white rounded-2xl shadow-sm overflow-hidden flex flex-col">
+                <div class="projects-card reveal bg-white rounded-2xl shadow-sm overflow-hidden flex flex-col">
                     <div class="flex items-center justify-center p-5 bg-gray-50" style="height:260px;">
-                        <img src="screens/Panelization_of_USB-C_1.png" alt="Tap Duel app" class="h-full max-w-full object-contain drop-shadow-lg">
+                        <img src="screens/Panelization_of_USB-C_1.png" alt="Image of USB-C connector panelization for production optimization." class="h-full max-w-full object-contain drop-shadow-lg">
                     </div>
                     <div class="p-5 flex flex-col flex-grow">
                         <div class="flex items-center justify-between mb-2">
@@ -400,8 +428,8 @@
                             <span class="bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full text-xs">KiCAD</span>							
                         </div>
                         <div class="flex items-center gap-4 flex-wrap">
-                          <a href="video.html#Show_V-cut_PCB" target="_self" class="app-store-link">
-                                <img src="icons/video-icon.svg" alt="Download on the App Store" class="app-store-badge-img">
+                          <a href="video.html#Show_V-cut_PCB" target="_self" class="pcb-store-link">
+                                <img src="icons/video-icon.svg" alt="Watch the video Panelization_of_USB-C" class="pcb-badge-img">
                             </a>
                             <a href="PCBs.html#Panelization_of_USB-C_Text" class="text-sm font-semibold text-gray-700 hover:text-gray-900 inline-flex items-center gap-1">Learn more <span aria-hidden="true">&rarr;</span></a>
                         </div>
@@ -525,10 +553,10 @@
 
         // ── Sidebar active state on scroll ──
         (function () {
-            const sectionIds = ['about', 'featured', 'contact'];
+            const sectionIds = ['about', 'projects', 'contact'];
             const linkMap = {
                 about:    document.querySelector('.sidebar-nav-link[data-section="about"]'),
-                featured: document.querySelector('.sidebar-nav-link[data-page="apps"]'),
+                projects: document.querySelector('.sidebar-nav-link[data-page="pcbs"]'),
                 contact:  document.querySelector('.sidebar-nav-link[data-section="contact"]'),
             };
             const obs = new IntersectionObserver((entries) => {
